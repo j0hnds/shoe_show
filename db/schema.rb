@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(:version => 20121116032145) do
   end
 
   create_table "coordinators", :force => true do |t|
-    t.string   "first",           :limit => 40
-    t.string   "last",            :limit => 40
+    t.string   "first_name",      :limit => 40
+    t.string   "last_name",       :limit => 40
     t.integer  "contact_info_id",               :null => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false

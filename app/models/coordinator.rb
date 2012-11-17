@@ -3,11 +3,9 @@ class Coordinator < ActiveRecord::Base
   belongs_to :contact_info
   has_many :phones, :as => :phoneable
 
-  attr_accessible :email, :first, :last, :phone
+  attr_accessible :first_name, :last_name
 
-  validates_presence_of :first
-  validates_presence_of :last
-  validates_presence_of :email
-  validates_presence_of :phone
+  validates_presence_of :first_name
+  validates_presence_of :last_name
 
 end
