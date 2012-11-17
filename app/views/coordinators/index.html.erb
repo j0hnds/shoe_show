@@ -1,0 +1,27 @@
+<div>
+  <%= link_to "New", new_coordinator_path %>
+</div>
+<table>
+  <col/>
+  <col/>
+  <col/>
+  <col/>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>&nbsp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @coordinators.each do |coordinator|%>
+    <tr>
+      <td><%= format_name(coordinator) %></td>
+      <td><%= coordinator.phones.first.present? ? coordinator.phones.first.phone_number : "&nbsp;" %></td>
+      <td><%= coordinator.contact_info.email %></td>
+      <td><%= link_to "Edit", edit_coordinator_path(coordinator) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
