@@ -1,3 +1,4 @@
+# -*- ruby -*-
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
@@ -7,6 +8,7 @@ gem 'rails', '3.2.9'
 
 gem 'pg'
 
+gem 'angularjs-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

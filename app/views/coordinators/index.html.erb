@@ -1,7 +1,5 @@
-<div>
-  <%= link_to "New", new_coordinator_path %>
-</div>
-<table>
+<h1>Coordinators</h1>
+<table class="table table-striped">
   <col/>
   <col/>
   <col/>
@@ -20,8 +18,11 @@
       <td><%= format_name(coordinator) %></td>
       <td><%= coordinator.phones.first.present? ? coordinator.phones.first.phone_number : "&nbsp;" %></td>
       <td><%= coordinator.contact_info.email %></td>
-      <td><%= link_to "Edit", edit_coordinator_path(coordinator) %></td>
+      <td><%= link_to "Edit", edit_coordinator_path(coordinator), :class => 'btn btn-mini' %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+<div class="form-actions">
+  <%= link_to "New", new_coordinator_path, :class => 'btn btn-mini' %>
+</div>
