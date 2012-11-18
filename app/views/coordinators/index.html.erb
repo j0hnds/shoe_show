@@ -9,7 +9,7 @@
       <th>Name</th>
       <th>Phone</th>
       <th>Email</th>
-      <th>&nbsp</th>
+      <th><%= link_to "New", new_coordinator_path, :class => 'btn btn-mini' %></th>
     </tr>
   </thead>
   <tbody>
@@ -23,6 +23,3 @@
     <% end %>
   </tbody>
 </table>
-<div class="form-actions">
-  <%= link_to "New", new_coordinator_path, :class => 'btn btn-mini' %>
-</div>
