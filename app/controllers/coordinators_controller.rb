@@ -2,6 +2,10 @@ class CoordinatorsController < ApplicationController
 
   def index
     @coordinators = Coordinator.sorted
+    respond_to do | format |
+      format.html # index.html.erb
+      format.json # index.json.jbuilder
+    end
   end
 
   def new

@@ -12,6 +12,9 @@ ShoeShow::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+
+  # This is the rails route for coordinators. We're going to kick
+  # it out to use the angular stuff
   resources :coordinators
 
   # Sample resource route with options:
@@ -50,6 +53,7 @@ ShoeShow::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
+  root :to => 'dash#index'
 
   # See how all your routes lay out with "rake routes"
 

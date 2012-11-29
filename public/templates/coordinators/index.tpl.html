@@ -1,0 +1,44 @@
+<h1>Coordinators</h1>
+
+<div ng-controller="CoordinatorListCtrl">
+
+  <div class="grid-toolbar">
+    <a class="btn" id="new_coordinator_button" ng-click="add()">
+      <i class="icon-plus"></i>
+      Add Coordinator
+    </a>
+    <form class="pull-right">
+      <div class="input-append">
+        <input
+          ng-model="coordinator_search"
+          class="input-large use-tooltip"
+          type="text"
+          title="filter by name">
+        <span class="add-on">
+          <i class="icon-search"></i>
+        </span>
+      </div>
+    </form>
+  </div>
+
+  <table class="table table-striped table-bordered table-hover">
+    <col/>
+    <col/>
+    <col/>
+    <thead>
+      <tr>
+	<th>Name</th>
+	<th>Phone</th>
+	<th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="coordinator in coordinators | filter:coordinator_search">
+	<td>{{coordinator.last_name}}, {{coordinator.first_name}}</td>
+	<td>{{coordinator.work_phone}}</td>
+	<td>{{coordinator.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

@@ -12,6 +12,20 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require angular-1.0.2
+//= require angular-ui-0.3.0
 //= require twitter/bootstrap
-//= require angular
-//= require_tree .
+//= require underscore-1.4.2
+
+//= require rmsc
+//= require Routes
+
+//= require common/directives/DynamicController
+
+//= require common/services/Data
+
+//= require common/resources/Coordinators
+
+//= require controllers/Application
+//= require controllers/Coordinators
+
