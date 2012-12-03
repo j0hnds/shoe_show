@@ -33,7 +33,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="coordinator in coordinators | filter:coordinator_search">
+      <tr ng-repeat="coordinator in coordinators | filter:coordinator_search" ng-controller="CoordinatorListDetailCtrl" ng-click="show()" class="show_row">
 	<td>{{coordinator.last_name}}, {{coordinator.first_name}}</td>
 	<td>{{coordinator.work_phone}}</td>
 	<td>{{coordinator.email}}</td>

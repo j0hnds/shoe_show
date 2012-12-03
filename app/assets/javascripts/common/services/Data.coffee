@@ -35,8 +35,13 @@ angular.module('services.data').factory('Data', ['$log', '$http', ($log, $http) 
       thenFactoryMethod(httpPromise, successCallback, errorCallback, true)
 
     Resource.getById = (id, successCallback, errorCallback) ->
-      httpPromise = $http.get("#{url}/#{id}")
-      thenFactoryMethod(httpPromise, successCallback, errorCallback)
+      #httpPromise = $http.get("#{url}/#{id}")
+      #thenFactoryMethod(httpPromise, successCallback, errorCallback)
+      $http.get(url).then(
+        (response) ->
+          record = r for r in response.data when r.id is parseInt(id)
+          successCallback(new Resource(record))
+      )
 
     # Instance methods
 
@@ -48,7 +53,7 @@ angular.module('services.data').factory('Data', ['$log', '$http', ($log, $http) 
       thenFactoryMethod(httpPromise, successCallback, errorCallback)
 
     Resource.prototype.$update = (successCallback, errorCallback) ->
-      httpPromise = $http.put("#{url}/#{@id}")
+      httpPromise = $http.put("#{url}/#{@id}", @)
       thenFactoryMethod(httpPromise, successCallback, errorCallback)
 
     Resource.prototype.$remove = (successCallback, errorCallback) ->
@@ -56,6 +61,7 @@ angular.module('services.data').factory('Data', ['$log', '$http', ($log, $http) 
       thenFactoryMethod(httpPromise, successCallback, errorCallback)
 
     Resource.prototype.$saveOrUpdate = (saveCallback, updateCallback, errorSaveCallback, errorUpdateCallback) ->
+      $log.info "Idiot"
       if @$id()
         @$update(updateCallback, errorUpdateCallback)
       else

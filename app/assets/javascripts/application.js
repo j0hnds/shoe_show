@@ -21,11 +21,16 @@
 //= require Routes
 
 //= require common/directives/DynamicController
+//= require common/directives/CrudTitle
 
+//= require common/services/Crud
+//= require common/services/CrudRouteProvider
 //= require common/services/Data
+//= require common/services/Alerts
 
 //= require common/resources/Coordinators
 
 //= require controllers/Application
+//= require controllers/Alerts
 //= require controllers/Coordinators
 

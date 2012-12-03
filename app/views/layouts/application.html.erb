@@ -14,6 +14,13 @@
   <div ng-include="'/templates/header.tpl.html'"></div>
 <%# Navigation bar %>
 
+<div ng-controller="AlertsCtrl">
+  <div ng-repeat="(key,val) in AlertsSvc.alerts" class="alert {{key}}">
+    <a class="close" ng-click="clearAlertType(key)">×</a>
+    <p ng-repeat="msg in val">{{msg}}</p>
+  </div>
+</div>
+
 <%# Container is a bootstrap class %>
 <div class="container">
   <div class="row">

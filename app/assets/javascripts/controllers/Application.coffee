@@ -11,6 +11,19 @@ angular.module('rmsc').controller('ApplicationCtrl', ['$log','$scope','$route','
   $scope.back = ->
     history.back()
 
+  # Generic container for selected crud object
+  $scope.crud_record = {}
+
+  # Accept crud object from child controllers
+  $scope.$on('selectRecord', (event, data) ->
+    angular.copy(data, $scope.crud_record)
+  )
+
+  # Clear crud object
+  $scope.$on('clearRecord', ->
+    angular.copy({}, $scope.crud_record)
+  )
+
   # Set page title
   $scope.$on(
     "$routeChangeSuccess", ($currentRoute, $previousRoute) ->

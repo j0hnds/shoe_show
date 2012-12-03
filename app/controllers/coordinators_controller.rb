@@ -1,11 +1,13 @@
 class CoordinatorsController < ApplicationController
 
+  respond_to :json
+
   def index
     @coordinators = Coordinator.sorted
-    respond_to do | format |
-      format.html # index.html.erb
-      format.json # index.json.jbuilder
-    end
+  end
+
+  def show
+    @coordinator = Coordinator.find(params[:id])
   end
 
   def new
@@ -15,16 +17,17 @@ class CoordinatorsController < ApplicationController
   end
 
   def create
-    @contact_info = ContactInfo.new(params[:contact_info])
-    @phone = Phone.new(params[:phone])
+    # binding.pry
+    @contact_info = ContactInfo.new(:email => params[:email])
+    @phone = Phone.new(:phone_type => 'work', :phone_number => params[:work_phone])
     @coordinator = Coordinator.new(params[:coordinator])
     @coordinator.contact_info = @contact_info
     @coordinator.phones << @phone
     if @coordinator.valid? && @contact_info.valid? && @phone.valid?
       @coordinator.save
+      # binding.pry
+      render :show
     end
-
-    redirect_to coordinators_path
   end
 
   def edit
@@ -34,15 +37,16 @@ class CoordinatorsController < ApplicationController
   end
 
   def update
+    # binding.pry
     @coordinator = Coordinator.find params[:id]
-    @coordinator.first_name = params[:coordinator][:first_name]
-    @coordinator.last_name = params[:coordinator][:last_name]
-    @coordinator.contact_info.email = params[:contact_info][:email]
+    @coordinator.first_name = params[:first_name]
+    @coordinator.last_name = params[:last_name]
+    @coordinator.contact_info.email = params[:email]
     phone = @coordinator.phones.first
     if phone.present?
-      phone.phone_number = params[:phone][:phone_number]
+      phone.phone_number = params[:work_phone]
     else
-      phone = Phone.new(params[:phone][:phone_number])
+      phone = Phone.new(:phone_type => 'work', :phone_number => params[:work_phone])
       @coordinator.phones << phone
     end
 
@@ -50,11 +54,17 @@ class CoordinatorsController < ApplicationController
       @coordinator.contact_info.save
       phone.save
       @coordinator.save
+      render :show
     else
-      log.error("Coordinator was not valid!!!: #{@coordinator.errors.inspect}")
+      binding.pry
+      # log.error("Coordinator was not valid!!!: #{@coordinator.errors.inspect}")
     end
+  end
 
-    redirect_to coordinators_path
+  def destroy
+    coordinator = Coordinator.find params[:id]
+    coordinator.destroy
+    render :nothing => true, :status => :ok
   end
 
 end

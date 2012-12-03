@@ -1,0 +1,25 @@
+<!-- this was an ng-submit -->
+<form action="save()" ng-controller="CoordinatorDetailCtrl">
+  <p><a ng-click="back()">&lt;- Coordinator List</a></p>
+
+  <h1 crud-title="coordinator.id">Coordinator</h1>
+
+  <label for="coordinator-first_name">First Name</label>
+  <input type="text" name="coordinator-first_name" id="coordinator-first_name" ng-model="coordinator.first_name">
+
+  <label for="coordinator-last_name">Last Name</label>
+  <input type="text" name="coordinator-last_name" id="coordinator-last_name" ng-model="coordinator.last_name">
+
+  <label for="coordinator-email">Email</label>
+  <input type="text" name="coordinator-email" id="coordinator-email" ng-model="coordinator.email">
+
+  <label for="coordinator-work_phone">Phone</label>
+  <input type="text" name="coordinator-work_phone" id="coordinator-work_phone" ng-model="coordinator.work_phone">
+
+  <div>
+    <input type="submit" class="btn btn-primary" value="Save Coordinator">
+    <input type="submit" class="btn btn-danger" value="Delete Coordinator" ng-show="coordinator.id">
+    <input type="button" class="btn" value="Cancel" ng-click="cancel()">
+  </div>
+
+</form>
