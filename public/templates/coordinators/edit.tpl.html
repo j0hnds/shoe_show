@@ -1,5 +1,5 @@
 <!-- this was an ng-submit -->
-<form action="save()" ng-controller="CoordinatorDetailCtrl">
+<form ng-submit="save()" ng-controller="CoordinatorDetailCtrl">
   <p><a ng-click="back()">&lt;- Coordinator List</a></p>
 
   <h1 crud-title="coordinator.id">Coordinator</h1>
@@ -17,9 +17,17 @@
   <input type="text" name="coordinator-work_phone" id="coordinator-work_phone" ng-model="coordinator.work_phone">
 
   <div>
-    <input type="submit" class="btn btn-primary" value="Save Coordinator">
-    <input type="submit" class="btn btn-danger" value="Delete Coordinator" ng-show="coordinator.id">
-    <input type="button" class="btn" value="Cancel" ng-click="cancel()">
+    <button type="submit" class="btn btn-primary">
+      <i class="icon-download-alt icon-white"></i>
+      Save Coordinator
+    </button>
+    <button type="submit" class="btn btn-danger" ng-show="coordinator.id">
+      <i class="icon-trash icon-white"></i>
+      Delete Coordinator
+    </button>
+    <button type="button" class="btn" ng-click="cancel()">
+      Cancel
+    </button>
   </div>
 
 </form>

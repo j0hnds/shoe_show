@@ -61,7 +61,6 @@ angular.module('services.data').factory('Data', ['$log', '$http', ($log, $http) 
       thenFactoryMethod(httpPromise, successCallback, errorCallback)
 
     Resource.prototype.$saveOrUpdate = (saveCallback, updateCallback, errorSaveCallback, errorUpdateCallback) ->
-      $log.info "Idiot"
       if @$id()
         @$update(updateCallback, errorUpdateCallback)
       else

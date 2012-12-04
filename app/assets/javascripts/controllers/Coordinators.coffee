@@ -51,12 +51,17 @@ angular.module('rmsc').controller('CoordinatorDetailCtrl',['$log','$rootScope','
 
   $scope.save = ->
     $scope.coordinator.$saveOrUpdate(
-      (response) ->
+      (response) -> # success create callback
         # success message
         $scope.back()
         # history.back()
-      ,(response) ->
+      ,(response) -> # success update callback
+        $scope.back()
+      ,(response) -> # error create callback
+        $log.info("Error creating the thing")
+      ,(response) -> # error update callback
         # error message
+        $log.info("Error updating the thing")
     )
 
 ])
