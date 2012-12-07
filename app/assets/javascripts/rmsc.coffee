@@ -1,6 +1,7 @@
 angular.module('rmsc', [
   'directives.dynamicController',
   'directives.crudTitle',
+  'directives.modal',
   'services.data',
   'services.crud',
   'resources.coordinators'

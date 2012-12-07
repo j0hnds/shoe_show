@@ -21,10 +21,14 @@
       <i class="icon-download-alt icon-white"></i>
       Save Coordinator
     </button>
-    <button type="submit" class="btn btn-danger" ng-show="coordinator.id">
-      <i class="icon-trash icon-white"></i>
-      Delete Coordinator
-    </button>
+
+    <ng-alert title="My Alert" text="somthing happened">
+      <a class="btn btn-danger" ng-show="coordinator.id">
+	<i class="icon-trash icon-white"></i>
+	Delete Coordinator
+      </a>
+    </ng-alert>
+
     <button type="button" class="btn" ng-click="cancel()">
       Cancel
     </button>

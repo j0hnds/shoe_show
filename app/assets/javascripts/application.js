@@ -22,11 +22,13 @@
 
 //= require common/directives/DynamicController
 //= require common/directives/CrudTitle
+//= require common/directives/Modal
 
 //= require common/services/Crud
 //= require common/services/CrudRouteProvider
 //= require common/services/Data
 //= require common/services/Alerts
+//= require common/services/PopupService
 
 //= require common/resources/Coordinators
 
