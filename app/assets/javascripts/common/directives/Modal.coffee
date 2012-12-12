@@ -12,11 +12,12 @@ angular.module('directives.modal').directive('ngPopup', (PopupService) ->
 
 angular.module('directives.modal').directive('ngConfirm', (PopupService) ->
   restrict: 'E',
-  link: ($scope, $element, $attrs) ->
+  link: (scope, element, attrs) ->
     # Could have custom or bootstrap modal options here
     popupOptions = {}
-    $element.bind.click ->
-      PopupService.confirm $attrs.title,$attrs.actionText,$attrs.actionButtonText,$attrs.actionFunction,$attrs.cancelButtonText,$attrs.cancelFunction,$scope,popupOptions
+    element.bind("click", ->
+      PopupService.confirm attrs.title,attrs.actionText,attrs.actionButtonText,attrs.actionFunction,attrs.cancelButtonText,attrs.cancelFunction,scope,popupOptions
+    )
 )
 
 angular.module('directives.modal').directive('ngAlert', (PopupService) ->

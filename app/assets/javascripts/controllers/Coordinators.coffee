@@ -27,7 +27,7 @@ angular.module('rmsc').controller('CoordinatorListDetailCtrl',['$rootScope', '$s
 ])
 
 
-angular.module('rmsc').controller('CoordinatorDetailCtrl',['$log','$rootScope','$scope','$location','Coordinators','$routeParams',($log,$rootScope, $scope, $location,Coordinators,$routeParams) ->
+angular.module('rmsc').controller('CoordinatorDetailCtrl',['$log','$rootScope','$scope','$location','Coordinators','$routeParams','PopupService',($log,$rootScope, $scope, $location,Coordinators,$routeParams,PopupService) ->
 
   $log.info("coordinator id: " + $routeParams.coordinator_id)
 
@@ -48,6 +48,15 @@ angular.module('rmsc').controller('CoordinatorDetailCtrl',['$log','$rootScope','
 
   $scope.cancel = ->
     $scope.back()
+
+  $scope.remove = ->
+    PopupService.close()
+    $scope.coordinator.$remove(
+      (response) -> # success callback
+        $location.path("/coordinators")
+      ,(response) -> # error callback
+        $log.info("Error removing the thing")
+    )
 
   $scope.save = ->
     $scope.coordinator.$saveOrUpdate(
